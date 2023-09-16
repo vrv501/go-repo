@@ -8,6 +8,9 @@
 *.so
 *.dylib
 
+# Mock files
+**/*mock.go
+
 # Test binary, built with `go test -c`
 *.test
 
@@ -15,7 +18,11 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
+vendor/
 
 # Go workspace file
 go.work
+
+# Misc
+*.env
+.vscode/
