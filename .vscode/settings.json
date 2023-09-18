@@ -1,9 +1,11 @@
 {
     "go.lintTool": "golangci-lint",
-    "go.formatTool": "gofumpt",
-    "go.formatFlags": ["-extra"],
+	"go.formatTool": "gofumpt",
     // ENV VARS for debugging
 	"go.toolsEnvVars": {
 		
+	},
+    "gopls": {
+		"formatting.gofumpt": true,
 	},
 }
