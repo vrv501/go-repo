@@ -116,7 +116,7 @@ linters-settings:
     no-unaliased: true
     # Do not allow non-required aliases.
     # Default: false
-    no-extra-aliases: true
+    no-extra-aliases: false
 
   lll:
     # Max line length, lines longer will be reported.
@@ -238,7 +238,7 @@ linters-settings:
       # https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#cyclomatic
       - name: cyclomatic
         severity: warning
-        disabled: false
+        disabled: true
         arguments: [3]
       # https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#datarace
       - name: datarace
@@ -464,7 +464,7 @@ linters-settings:
         disabled: false
         arguments:
           - "fmt.Printf"
-          - "myFunction"
+          - "fmt.Println"
       # https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#unnecessary-stmt
       - name: unnecessary-stmt
         severity: warning
@@ -487,7 +487,7 @@ linters-settings:
         disabled: false
       # https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#waitgroup-by-value
       - name: waitgroup-by-value
-        severity: warning
+        severity: error
         disabled: false
 
 linters:
@@ -518,7 +518,6 @@ linters:
     - ireturn
     - lll
     - musttag
-    - nakedret
     - nestif
     - nilnil
     - noctx
