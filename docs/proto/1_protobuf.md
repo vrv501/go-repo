@@ -89,4 +89,20 @@
 - add metadata to context `AppendToOutgoingContext`
 - SendMetadata must be called before sending request or response and shud only be done once
 
+## HTTP-to-gRPC codes
+200 - 0
+400(bad req) - 3(invalid_argument),9(failed_precondition),11(out_of_range)
+401(unauthorized lol) - 16(unauthenticated)
+403(forbidden) - 7(permission_denied)
+404 - 5(not_found)
+409 - 6(already_exists), 10(aborted)?
+429 - 8(resource_exhausted)
+499 - 1(cancelled) - req cancelled by client
+500 - 15(data_loss? - why shud we inform client what???), 2(unknown), 13(internal - this is better)
+503 - 14(unavailable)
+504 - 4(deadline_exceeded - set by client)
+
+
+
+
 
