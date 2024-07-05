@@ -1,0 +1,4 @@
+- all params are pass by value to functions in go 
+- however slices & maps are passed by refernce because they themselves are refernce to underlying data-structure
+- but for slices there's a special scnario. Any slice passed to a function is given slice address. Which means if you modify the elemts in alice it will affect the original array.
+However if you try to lengthen beyond slice's capacity, a new slice will be crated with new address. which emans the original slice passed to function will be unaffected. So tldr; slices passed by refernce to a fucntion. but the moment you try to do ops that is beyond acapcity, they will not affect the slice
