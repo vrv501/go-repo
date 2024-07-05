@@ -102,6 +102,15 @@
 503 - 14(unavailable)
 504 - 4(deadline_exceeded - set by client)
 
+Below will never returned by library:
+INVALID_ARGUMENT
+NOT_FOUND
+ALREADY_EXISTS
+FAILED_PRECONDITION
+ABORTED
+OUT_OF_RANGE
+DATA_LOSS
+
 
 
 
