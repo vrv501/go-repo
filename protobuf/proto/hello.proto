@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package hello.v1;
+
+option go_package = "github.com/vrv501/go-repo/example-grpc/generated";
+
+message Hello {
+  string name = 1;
+}

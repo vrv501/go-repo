@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package group.v1;
+
+import "user.proto";
+
+option go_package = "github.com/vrv501/go-repo/example-grpc/generated";
+
+message UserGroup {
+  uint32 group_id = 1 [json_name = "group_id"];
+  string group_name = 2 [json_name = "group_name"];
+  repeated string roles = 3;
+  repeated user.v1.User users = 4;
+  optional string description = 16;
+}

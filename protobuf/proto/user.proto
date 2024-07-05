@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package user.v1;
+
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/vrv501/go-repo/example-grpc/generated";
+
+enum Gender { // Gender for User
+  GENDER_UNSPECIFIED = 0;
+  GENDER_MALE = 1;
+  GENDER_FEMALE = 2;
+  GENDER_OTHERS = 3;
+}
+
+message User {
+  uint32 id = 1;
+  string username = 2;
+  bool is_active = 3 [json_name = "is_active"];
+  bytes password = 4;
+  Gender gender = 5;
+  repeated string emails = 6;
+  Address address = 7;
+
+  message Coordinate {
+    // The latitude in degrees. It must be in the range [-90.0, +90.0].
+    double latitude = 1;
+
+    // The longitude in degrees. It must be in the range [-180.0, +180.0].
+    double longitude = 2;
+  }
+
+  Coordinate pos = 8;
+
+  google.protobuf.Any cchannel = 9;
+
+  oneof chhanellev2 {
+    SociaMedia ss = 11;
+    PhoneEmail pe = 12;
+  }
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string country = 3;
+}
+
+message PhoneEmail {}
+
+message SociaMedia {}

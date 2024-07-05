@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package content.v1;
+
+option go_package = "github.com/vrv501/go-repo/example-grpc/generated";
+
+message UserContent {
+  uint32 user_content_id = 1;
+  string slug = 2;
+  string html_content = 3;
+  uint32 author_id = 4;
+  string cateogery = 5;
+}
