@@ -1,0 +1,64 @@
+syntax = "proto3";
+package bank.v1;
+
+import "date.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/vrv501/go-repo/grpc/generated/bank";
+
+message CurrentBalanceRequest {
+  string account_number = 1;
+}
+
+message CurrentBalanceResponse {
+  double amount = 1;
+  google.type.Date current_date = 2;
+}
+
+message ExchangeRateRequest {
+  string from_curr = 1;
+  string to_curr = 2;
+}
+
+message ExchangeRateResponse {
+  ExchangeRateRequest request = 1;
+  double rate = 2;
+  google.protobuf.Timestamp timestamp = 3;
+}
+
+enum TransactionType {
+  TRANSACTION_TYPE_UNSPECIFIED = 0;
+  TRANSACTION_TYPE_IN = 1;
+  TRANSACTION_TYPE_OUT = 2;
+}
+message Transaction {
+  string account_number = 1;
+  TransactionType type = 2;
+  double amount = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+message TransactionSummary {
+  string account_number = 1;
+  double total_money_in = 2;
+  double total_money_out = 3;
+  double balance = 4;
+  google.type.Date transaction_date = 5;
+}
+
+message TransferRequest {
+  string from_account_number = 1;
+  string to_account_number = 2;
+  string currency = 3;
+  double amount = 4;
+}
+
+message TransferResponse {}
+
+service BankService {
+  rpc GetCurrentBalance(CurrentBalanceRequest) returns (CurrentBalanceResponse);
+  rpc FetchExchangeRates(ExchangeRateRequest) returns (stream ExchangeRateResponse);
+  rpc SummarizeTransactions(stream Transaction) returns (TransactionSummary);
+  rpc TransferMultiple(stream TransferRequest) returns (stream TransferResponse);
+  rpc AdUnimplemented(CurrentBalanceRequest) returns (CurrentBalanceResponse);
+}
