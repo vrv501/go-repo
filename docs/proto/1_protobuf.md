@@ -78,9 +78,7 @@
 - grpc/go grpc, status, codes, [metadata](https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-auth-support.md), gooelais/rpc/errdetails
 - grpc-go-middleware
 - [keepalive](https://pkg.go.dev/google.golang.org/grpc/keepalive?utm_source=godoc)
-- https://github.com/super-linter/super-linter 
-- https://github.com/nilslice/protolock
-- https://github.com/grpc/grpc-go/blob/master/examples/features
+- Implementing four kinds of grpc using go: https://grpc.io/docs/languages/go/basics/
 
 
 ## Misc
@@ -88,8 +86,12 @@
 - status.Error returns error. You can add additional details to the error using status.WithDetails. Clients can convert error to status.Status and then get details using sttaus.Details
 - add metadata to context `AppendToOutgoingContext`
 - SendMetadata must be called before sending request or response and shud only be done once
+- https://github.com/super-linter/super-linter 
+- https://github.com/nilslice/protolock
+- https://github.com/grpc/grpc-go/blob/master/examples/features
 
 ## HTTP-to-gRPC codes
+```
 200 - 0
 400(bad req) - 3(invalid_argument),9(failed_precondition),11(out_of_range)
 401(unauthorized lol) - 16(unauthenticated)
@@ -101,6 +103,7 @@
 500 - 15(data_loss? - why shud we inform client what???), 2(unknown), 13(internal - this is better)
 503 - 14(unavailable)
 504 - 4(deadline_exceeded - set by client)
+```
 
 Below will never returned by library:
 INVALID_ARGUMENT
