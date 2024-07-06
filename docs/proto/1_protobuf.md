@@ -44,7 +44,11 @@
 - For string, numeric, enum, bytes if optional is set then explicit presense can be tracked
 - For singlular messages it is always tracked
 - For maps(optional is N/A), repeated(optional is N/A) not tracked
-- For field in oneof's(optional is N/A) it is tracked 
+- For field in oneof's(optional is N/A) it is tracked
+
+## Metadata
+- SendMetadata must be called before sending request or response and shud only be done once
+- header handling at server & client is language dependent. Follow guide here: https://github.com/grpc/grpc-go/tree/master/examples/features/metadata
 
 
 ## Other types
@@ -85,7 +89,6 @@
 - grpc reads and writes are thread safe however when streaming, do not attempt to concurrent read or concurrent write, but concurrent read & write is ok(not multiple reads or writes but read & write can be done concurrently)
 - status.Error returns error. You can add additional details to the error using status.WithDetails. Clients can convert error to status.Status and then get details using sttaus.Details
 - add metadata to context `AppendToOutgoingContext`
-- SendMetadata must be called before sending request or response and shud only be done once
 - https://github.com/super-linter/super-linter 
 - https://github.com/nilslice/protolock
 - https://github.com/grpc/grpc-go/blob/master/examples/features
@@ -105,14 +108,14 @@
 504 - 4(deadline_exceeded - set by client)
 ```
 
-Below will never returned by library:
-INVALID_ARGUMENT
-NOT_FOUND
-ALREADY_EXISTS
-FAILED_PRECONDITION
-ABORTED
-OUT_OF_RANGE
-DATA_LOSS
+Below will never returned by library:  
+INVALID_ARGUMENT  
+NOT_FOUND  
+ALREADY_EXISTS  
+FAILED_PRECONDITION  
+ABORTED  
+OUT_OF_RANGE  
+DATA_LOSS  
 
 
 
