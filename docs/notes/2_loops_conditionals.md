@@ -30,6 +30,12 @@
 
   }
   ```
+
+### Switch statements
+- You can use break to break out of any case but it snot required as it happens implicitly
+- You can use multiple values in case seperated by commas(case 3,4,5,6:). You can also have blank switch statement
+- You can have expressions ot be evaluated in switch case
+
 - switch statement just like above has initialisation & variable as starting point which are both optional. Each case however can be constant, function too   
   ```go
   switch optional-var-initialisation; optional-var {

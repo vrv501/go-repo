@@ -1,3 +1,13 @@
+### Arrays & Slices
+- Arrays are comparable using `==` and `!=`
+- nil represents lack of value for a type. it doesn't have any type
+- slices aren't comparable(== and != isnt allowed)
+- Slices can be converted to arrays using [4]int(slice) -- this will copy first four elements from slice to new array. Since it's a copy, any change made to original slice will not affect the new array
+- Arrays are passed by value
+- However if you type-cats slice as (*[4]int)(slice) -- no it will be pointer to underlying array of original slice which means any changes to slice will affect this pointer variable as well
+- Full Slice expression: slice[start:end:last-position-in-slice-to-share]. Last index will be last position in original slice that will be shared with this new slice. Capacity of new slice will be lastposition-start. So if new elements are appended to this new sice then it will no longer share underlying array of original slice. Instead it will be copied to new array pointed by slice. Which means original slice will be unaffaceted when capacity of new slice is increased
+
+
 - all arrays unlike C are fixed composite types. So when you say `x := [4]int{}` it literally means x is one whole composite(ncludes all 4 memory allocations & locations)  
   so if you assign array to some other var it lietrally copies everything
 - arrays support comparision operators (same length and equal values)
