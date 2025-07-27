@@ -42,3 +42,25 @@
 - append to any slice will interanlly take care to increase capacity
 - a fucntion arg with `funcName(arg ...int)` - here arg will be slice of type int
 - both maps & slices are refernces to their underlying implementations. SO if you pass them as args to funcitons, or assign them to another variable, know that anymodifications will afect them all!!!!
+
+### Pointers
+- A pointer is actually represented by 4 byte or 8 byte address which stores address of variable it is pointing to
+- When you pass the pointer to a function, you are actually copying the address pointed by pointer into a new variable   
+```go
+func f(y *int) {
+  k := 2
+  y = &k // useless since you are updating value pointed by y
+          // but at caller function, value stored at x will still be original address of z
+}
+z := 2
+var x *int = &z
+f(x) // here let's say z's address is 0xc8d
+    // then x's address will be 0xADF and the value stored at this address is z's address
+    // When you do f(x), inside f() y will be holding address pointed by x
+    // essentially y's address will be 0xBCD and value stored at that address will be z's address
+```
+- If you use new(T), it will return address which contains zero value of type   
+  ```go
+  x := new(int) // x is of type *int
+                // x != nil and *x will be 0
+  ```

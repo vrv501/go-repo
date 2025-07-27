@@ -5,6 +5,7 @@
 - Keys of map must be comparable(cant use slices, map)
 - Attempting to delete from nil map or if key doesnt exist doesnt do anything
 - Clearing a map using clear deletes all keys which means length of slice becomes zero not nil
+- However clearing a slice just sets elemnets until lenght to zero value
 
 ### Structs
 - No inheritance in go since no classes
