@@ -84,7 +84,7 @@
     Diff(T) float64
   }
 
-  type Foo[T Differ[T]](pair1, pair2 T) // here this is a self refernecing type constarint 
+  func Foo[T Differ[T]](pair1, pair2 T) // here this is a self refernecing type constarint 
   // where T is not just any type, but any type that also implements the interface Differ
   // pair1, pair2 args are of type Differ[T] and not T
   ```
