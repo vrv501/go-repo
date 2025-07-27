@@ -14,6 +14,9 @@
   type Circle struct{}
   ```
   In the above example you can create methods for myInt, Circle but not for int, struct
+- You can declare mix of pointer & value receivers on methods, but dont. When you have pointer receiver, but declare a value instance for type. You can stll accs smethods having pointer receivers because go automatically converts into rigt format. The reverse also holds true. A Pointer instance will be able to acces smethods declared using value receivers
+- Same might not be true when you decide what type of (value/pointer) receivers implement methods of an interface and assign it to a variable of type intreface. There you have to be explicit
+
 - Keep in mind if you declare your onw type on an inbuilt type, it doesn't inherit the original type's methods - no inheritance in go 😄
 - You must also declare methods associated to a type in same package
 - If you have a struct and some methods associated with it using pointer receiver, then if you declare a variable which is pointer to the struct holding nil. Now if you call any methods on this variable it will stll work(lol?). Which is why its better to handle nil in your pointer receiver methods. However those methods which have value receivers will panic snce there's no value being pointed by that variable

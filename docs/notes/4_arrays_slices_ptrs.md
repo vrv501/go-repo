@@ -58,6 +58,14 @@ f(x) // here let's say z's address is 0xc8d
     // then x's address will be 0xADF and the value stored at this address is z's address
     // When you do f(x), inside f() y will be holding address pointed by x
     // essentially y's address will be 0xBCD and value stored at that address will be z's address
+/*
+pointer x means address of z, *x means get the value at address of z,
+&x means address of pointer var x.
+If you want to change address x is pointing to, you need to use double pointer
+Ex: var k **int = &x
+*k = &z // k means address of x, *k means get value at address of x which is right now nil
+        // *k = &z means update value at address of x to address of z
+*/
 ```
 - If you use new(T), it will return address which contains zero value of type   
   ```go
