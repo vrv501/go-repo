@@ -39,3 +39,38 @@
 - sync.Once, sync.WaitGroup, sync.Mutex should be passed a spointers if required
 - break in switch, select will break from them
 - sync provides mutex package which can be used to access a shared resources between multiple go routines. waitGroups can be used to wait until all go routines are executed in main routine
+
+## HTTP Handler
+- First use Header() to set any custom headers. Then use WriteHeader(int) to set status code. Finally Write([]byte) to write response body. This order is to be strictly respected
+
+## Context
+- Common pattern to save context keys
+- Create your package inside that have own type and iota combination
+  ```go
+  // use this approach if you have multiple keys to be added to context
+  type userKey int
+
+  const (
+    _ userKey = iota
+    key1 // actual keys
+    key2 
+
+  )
+  
+
+  // Use this approach if you have single key to be adde din context
+  type userKey struct{}   
+
+    
+  // Helper functions to add to context
+  func ContextWithUser(ctx context.Context, user string) context.Context {
+    return context.WithValue(ctx, key, user)
+  }
+
+  func UserFromContext(ctx context.Context) (string, bool) {
+      user, ok := ctx.Value(key).(string)
+      return user, ok
+  }
+
+  ```
+- Calling Done() on ctx that is not yet cancelled, returns nil
