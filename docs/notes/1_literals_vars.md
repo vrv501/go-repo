@@ -53,3 +53,6 @@ All literal types are not having any default types. There are 4 types: integer, 
 `[255 123 45 6 89]`
 - You can typecast rune, byte as string(var). Similarly you can type-cast string as []rune(str) or []byte(str)
 - for-range loop loops over rune in strings. So if you use `for i, v := range str`, the v is rune while i is starting index of rune. so dont be surprised if i is not consecutive as you loop over. You might need to type-cast string(v) to get string representation
+
+### Misc
+- len(), max(), min() are popular utility functions
