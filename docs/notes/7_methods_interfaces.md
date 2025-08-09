@@ -22,7 +22,7 @@
 - If you have a struct and some methods associated with it using pointer receiver, then if you declare a variable which is pointer to the struct holding nil. Now if you call any methods on this variable it will stll work(lol?). Which is why its better to handle nil in your pointer receiver methods. However those methods which have value receivers will panic snce there's no value being pointed by that variable
 
 - You can embed any type not just struct in nother struct. This makes all the methods available on the embedded type to be promoted to this new struct. This is called composition
-- This is useful for implementing a interface by a struct by siply embedding another type which implemnets the interface
+- This is useful for implementing a interface by a struct by simply embedding another type which implemnets the interface. Then the parent struct automatically implements the interface !!
 
 ### Interface
 - Interfaces can be embedded inside another interfaces essentially making anything that implements this new interface also implement original interface. This will help avoid suplicate method names
