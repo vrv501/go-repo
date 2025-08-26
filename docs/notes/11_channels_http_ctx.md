@@ -24,6 +24,7 @@
   for i := range c{} // recieved values from channel until its closed. then loop is auto terminated
   ```
 - Closing, writing to already closed buffered or unbuffered channel causes panic. Reading from already closed buffered returns whatever values are left in the channel or zero value if nothing is present. Reading from already close unbuffered channel returns zero value of the channel
+- when multiple gotoutines are using same channel, and you send data inside this channel, only one of them receives it. channels are not for broadcasting
 - comma ok idion works when reading from channel to determine if channel is open or closed, ok returns false when channel is closed
 - Raed/write on nil channel will hang. close will cause panic
 - select lets you wait on multiple channels. The case however is chosen at random   
