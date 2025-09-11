@@ -6,6 +6,10 @@
 - Attempting to delete from nil map or if key doesnt exist doesnt do anything
 - Clearing a map using clear deletes all keys which means length of slice becomes zero not nil
 - However clearing a slice just sets elemnets until lenght to zero value
+- By default maps are safe for concurrent reads only. anything else(simulatenous writes, simultaneous read/write) can lead to race conditions
+- To overcome above shortcomings use:
+  - `sync.Map` when you are doing read heavy operations but still need simulatenous writes
+  - `sync.RWMutex`, use RLock, RUnlock so that multiple go-routines can read simulatenously(remember this lock will get blocked only if somebody has acquired write lock). This means RLock can be held for multiple routines at a time. Whereas using Lock blocks all readers and writers. So only one writer is allowed. Do not use RLock, Lock which can cause deadlock. 
 
 ### Structs
 - No inheritance in go since no classes
